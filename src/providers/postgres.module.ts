@@ -1,6 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { Color } from 'src/projects/entities/color.entity';
+import { Project } from 'src/projects/entities/project.entity';
+import { Team } from 'src/teams/entities/team.entity';
+import { Meta } from 'src/users/entities/meta.entity';
+import { Telegram } from 'src/users/entities/telegram.entity';
+import { User } from 'src/users/entities/user.entity';
 
 @Module({
   imports: [
@@ -19,7 +25,7 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
           synchronize: true,
           useUTC: true,
           poolSize: 20,
-          entities: [],
+          entities: [User, Telegram, Meta, Team, Project, Color],
         };
       },
     }),
